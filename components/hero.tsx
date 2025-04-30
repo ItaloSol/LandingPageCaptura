@@ -24,22 +24,20 @@ const templates = [
     title: "Advocacia - Defesa do Consumidor",
     image: "/consumidor-pronto.webp",
   },
+  
   {
-    title: "Advocacia - Inventários e Sucessões",
-    image: "/familia-pronto.webp",
-  },
-  {
-    title: "Escritório de Advocacia Nardini",
-    image: "/nardini-pronto.webp",
+    title: "Millian Cosmético",
+    image: "/millian-pronto.webp",
   },
   {
     title: "Advocacia Bressan",
     image: "/bressan-Pronto.webp",
   },
   {
-    title: "Millian Cosmético",
-    image: "/millian-pronto.webp",
+    title: "Advocacia - Inventários e Sucessões",
+    image: "/familia-pronto.webp",
   },
+ 
   {
     title: "BioReino - Saúde e Bem-estar",
     image: "/bioreino-pronto.webp",
@@ -47,6 +45,10 @@ const templates = [
   {
     title: "Luan da Ribeiro - Escola de Dança",
     image: "/luanda-pronto.webp",
+  },
+  {
+    title: "Escritório de Advocacia Nardini",
+    image: "/nardini-pronto.webp",
   },
   {
     title: "Sorrir Mais Odontologia",
@@ -74,7 +76,7 @@ export default function Hero() {
   }, [api]);
 
   return (
-    <section className="pt-24 lg:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+    <section id='hero' className="pt-24 lg:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div 
           className="max-w-4xl mx-auto text-center"
@@ -101,7 +103,7 @@ export default function Hero() {
                 size="lg" 
                 className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-6 text-base sm:text-lg bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/20 group relative overflow-hidden"
               >
-                <a href={generateWhatsAppLink()} className="relative z-10 flex items-center justify-center">
+                <a href={generateWhatsAppLink()} target='_blank' className="relative z-10 flex items-center justify-center">
                   <span className="relative z-10">Quero Aumentar Minhas Conversões</span>
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
                   <div className="absolute inset-0 -z-10 bg-gradient-to-r from-orange-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

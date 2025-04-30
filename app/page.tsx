@@ -8,6 +8,7 @@ import Faq from '@/components/faq';
 import FinalCta from '@/components/final-cta';
 import Footer from '@/components/footer';
 import WhatsappButton from '@/components/whatsapp-button';
+import CTA from '@/components/cta';
 import Script from 'next/script';
 
 // This is redundant with the metadata in layout.tsx but included as an example
@@ -23,30 +24,17 @@ export default function Home() {
       <Header />
       <Hero />
       <Problems />
+     <CTA />
       <Benefits />
+      <CTA />
       <Portfolio />
+      <CTA />
       <Faq />
       <FinalCta />
       <Footer />
       <WhatsappButton />
-      
-      {/* Google Analytics Example Script - Replace with your actual GA tag */}
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX`}
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX');
-          `,
-        }}
-      />
+
+
     </main>
   );
 }

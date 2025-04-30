@@ -12,17 +12,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <Link href="/" className="font-bold text-2xl text-white inline-block mb-4">
+            <Link href="#hero" className="font-bold text-2xl text-white inline-block mb-4">
               Landing Page<span className="text-orange-500">Craft</span>
             </Link>
             <p className="text-gray-400 mb-6">
               Transformando visitantes em clientes através de landing pages de alta performance.
             </p>
             <div className="flex space-x-4">
-              <SocialLink href="#" icon={<Facebook size={18} />} />
-              <SocialLink href="#" icon={<Twitter size={18} />} />
-              <SocialLink href="#" icon={<Instagram size={18} />} />
-              <SocialLink href="#" icon={<Linkedin size={18} />} />
+              <SocialLink href="https://www.facebook.com/profile.php?id=61574015195577" icon={<Facebook size={18} />} />
+              <SocialLink href="https://www.instagram.com/landingpagecraft/" icon={<Instagram size={18} />} />
+              <SocialLink href="https://www.linkedin.com/in/italo-sol/" icon={<Linkedin size={18} />} />
             </div>
           </div>
           
