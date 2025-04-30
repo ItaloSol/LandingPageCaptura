@@ -8,18 +8,18 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Ítalo Sol - Landing Pages de Alta Performance',
+  title: 'Landing Pages de Alta Performance',
   description: 'Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias.',
   keywords: 'landing page, alta conversão, leads qualificados, desenvolvimento web, SEO, responsivo',
   authors: [{ name: 'Ítalo Sol' }],
   openGraph: {
-    title: 'Ítalo Sol - Landing Pages de Alta Performance',
+    title: 'Landing Pages de Alta Performance',
     description: 'Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias.',
-    url: 'https://italo-sol.com.br',
+    url: 'https://landingpage-apresentacao.web.app/',
     siteName: 'Ítalo Sol Web Developer',
     images: [
       {
-        url: 'https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg',
+        url: 'og-image.png',
         width: 1200,
         height: 630,
         alt: 'Ítalo Sol Web Developer'
