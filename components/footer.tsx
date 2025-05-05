@@ -76,8 +76,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500 text-sm">
           <p>© {new Date().getFullYear()} Landing Page Craft. Todos os direitos reservados.</p>
           <div className="mt-2 space-x-4">
-            <Link href="#" className="hover:text-gray-300 transition-colors">Termos de Uso</Link>
-            <Link href="#" className="hover:text-gray-300 transition-colors">Política de Privacidade</Link>
+            <Link href="/politica-de-privacidade" className="hover:text-gray-300 transition-colors">Política de Privacidade</Link>
           </div>
         </div>
       </div>
