@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'Ítalo Sol Web Developer',
     images: [
       {
-        url: 'og-image.png',
+        url: 'https://landingpage-apresentacao.web.app/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Ítalo Sol Web Developer'
@@ -102,6 +102,16 @@ export default function RootLayout({
         )}
         
         {/* Other head elements if needed */}
+        {/* SEO Meta Tags */}
+        <meta property="og:title" content="Landing Pages de Alta Performance" />
+        <meta property="og:description" content="Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias." />
+        <meta property="og:image" content="https://landingpage-apresentacao.web.app/og-image.png" />
+        <meta property="og:url" content="https://landingpage-apresentacao.web.app/" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Landing Pages de Alta Performance" />
+        <meta name="twitter:description" content="Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias." />
+        <meta name="twitter:image" content="https://landingpage-apresentacao.web.app/og-image.png" />
       </head>
     </html>
   );

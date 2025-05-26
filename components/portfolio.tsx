@@ -9,7 +9,7 @@ import { ArrowUpRight, Star, ArrowRight } from 'lucide-react';
 import { generateWhatsAppLink } from '@/lib/whatsapp';
 import { Button } from '@/components/ui/button';
 
-  const categories = ['Todos', 'Advocacia', 'Saúde', 'Serviços Digitais', 'Beleza', 'Educação'];
+  const categories = ['Todos', 'Advocacia', 'Saúde', 'Serviços Digitais', 'Produtos', 'Educação'];
   
   const projects = [
     {
@@ -61,10 +61,19 @@ import { Button } from '@/components/ui/button';
       id: 6,
       title: "Millian Cosmético",
       description: "Página de vendas para linha de cosméticos com carrossel de produtos e checkout otimizado",
-      category: "Beleza",
+      category: "Produtos",
       image: "/millian-pronto.webp",
-      conversionRate: "+120% vendas",
+      conversionRate: "+30% vendas",
       link: "https://milliancosmetico.web.app/"
+    },
+    {
+      id: 6.1,
+      title: "Fio Rico Professional",
+      description: "Página de vendas para linha de cosméticos com catálogo de produtos e checkout otimizado",
+      category: "Produtos",
+      image: "/fiorico.webp",
+      conversionRate: "+20% vendas",
+      link: "https://fiorico.web.app/"
     },
     {
       id: 7,
@@ -85,6 +94,15 @@ import { Button } from '@/components/ui/button';
       link: "https://luandaribeirohd.web.app/"
     },
     {
+      id: 8.1,
+      title: "S.O.S Terapias Integrativas Complementares - Curso de massagem",
+      description: "Landing Page para Venda de Curso de Massagem com Vídeo VSL e Checkout Otimizado",
+      category: "Educação",
+      image: "/s-o-s.webp",
+      conversionRate: "+20% compras",
+      link: "https://cursososterapias.web.app/"
+    },
+    {
       id: 9,
       title: "Sorrir Mais Odontologia",
       description: "Site institucional para clínica odontológica com agendamento online e especialidades",
@@ -92,6 +110,15 @@ import { Button } from '@/components/ui/button';
       image: "/dentista-pronto.webp",
       conversionRate: "100+ agendamentos/mês",
       link: "https://sorrirmais-odonto.web.app/"
+    },
+    {
+      id: 9.1,
+      title: "Selma Silva - Enfermeira",
+      description: "Site institucional para enfermeira especialista em feridas",
+      category: "Saúde",
+      image: "/selmasilva.webp",
+      conversionRate: "20% agendamentos/mês",
+      link: "https://enfermeiraselmasilva.web.app/"
     },
     {
       id: 10,
