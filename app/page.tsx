@@ -9,6 +9,7 @@ import FinalCta from '@/components/final-cta';
 import Footer from '@/components/footer';
 import WhatsappButton from '@/components/whatsapp-button';
 import CTA from '@/components/cta';
+import LandingTypes from '@/components/landing-types';
 import Script from 'next/script';
 
 // This is redundant with the metadata in layout.tsx but included as an example
@@ -23,8 +24,8 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Header />
       <Hero />
-      <Problems />
-     <CTA />
+      <LandingTypes />
+      <CTA />
       <Benefits />
       <CTA />
       <Portfolio />
@@ -33,8 +34,6 @@ export default function Home() {
       <FinalCta />
       <Footer />
       <WhatsappButton />
-
-
     </main>
   );
 }
