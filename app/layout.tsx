@@ -4,29 +4,34 @@ import { Inter } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import Script from 'next/script';
+import { PRECO_ESSENCIAL, formatBRL } from '@/lib/whatsapp';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const siteUrl = 'https://landingpage-apresentacao.web.app';
+const title = 'Sites profissionais para empresas e profissionais | Ítalo Sol';
+const description = `Site profissional, rápido no celular e com contato direto pelo WhatsApp. Pronto em até 5 dias úteis, a partir de ${formatBRL(PRECO_ESSENCIAL)}.`;
+
 export const metadata: Metadata = {
-  title: 'Landing Pages de Alta Performance',
-  description: 'Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias.',
-  keywords: 'landing page, alta conversão, leads qualificados, desenvolvimento web, SEO, responsivo',
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   authors: [{ name: 'Ítalo Sol' }],
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Landing Pages de Alta Performance',
-    description: 'Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias.',
-    url: 'https://landingpage-apresentacao.web.app/',
-    siteName: 'Ítalo Sol Web Developer',
-    images: [
-      {
-        url: 'https://landingpage-apresentacao.web.app/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Ítalo Sol Web Developer'
-      }
-    ],
+    title,
+    description,
+    url: '/',
+    siteName: 'LandingPageCraft | Ítalo Sol',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Sites profissionais feitos por Ítalo Sol' }],
     locale: 'pt_BR',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/og-image.png'],
   },
 };
 
@@ -37,20 +42,15 @@ export default function RootLayout({
 }) {
   const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID;
   const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-        >
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
           <Toaster />
         </ThemeProvider>
-      </body>
-      <head>
-        {/* Google Tag Manager Script (gtag.js) */}
+
         {gaMeasurementId && (
           <>
             <Script
@@ -71,8 +71,7 @@ export default function RootLayout({
             />
           </>
         )}
-        
-        {/* Meta Pixel Code */}
+
         {pixelId && (
           <>
             <Script
@@ -88,31 +87,24 @@ export default function RootLayout({
                   t.src=v;s=b.getElementsByTagName(e)[0];
                   s.parentNode.insertBefore(t,s)}(window, document,'script',
                   'https://connect.facebook.net/en_US/fbevents.js');
-                  fbq('init', '3937592949839754');
+                  fbq('init', '${pixelId}');
                   fbq('track', 'PageView');
                 `,
               }}
             />
             <noscript>
-              <img height="1" width="1" className="hidden"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                height="1"
+                width="1"
+                className="hidden"
+                alt=""
                 src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
               />
             </noscript>
           </>
         )}
-        
-        {/* Other head elements if needed */}
-        {/* SEO Meta Tags */}
-        <meta property="og:title" content="Landing Pages de Alta Performance" />
-        <meta property="og:description" content="Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias." />
-        <meta property="og:image" content="https://landingpage-apresentacao.web.app/og-image.png" />
-        <meta property="og:url" content="https://landingpage-apresentacao.web.app/" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Landing Pages de Alta Performance" />
-        <meta name="twitter:description" content="Aumente suas conversões e gere leads qualificados com landing pages otimizadas entregues em até 2 dias." />
-        <meta name="twitter:image" content="https://landingpage-apresentacao.web.app/og-image.png" />
-      </head>
+      </body>
     </html>
   );
 }

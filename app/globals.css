@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -76,9 +62,26 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-padding-top: 5rem;
+  }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  .pulse-animate {
+    animation: pulse-scale 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  }
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
 }
 
 @layer utilities {
@@ -97,4 +100,4 @@
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
-}
+}
