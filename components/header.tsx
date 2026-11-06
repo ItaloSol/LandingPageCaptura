@@ -5,30 +5,24 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { generateWhatsAppLink } from '@/lib/whatsapp';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    
-    // Only add scroll listener on client side
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
+        isScrolled || isMenuOpen
           ? "bg-white/95 backdrop-blur-sm shadow-md py-2"
           : "bg-transparent py-4"
       )}
@@ -38,61 +32,74 @@ const Header = () => {
           Landing Page<span className="text-orange-500">Craft</span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-8" aria-label="Navegação principal">
           <NavLinks />
-          <Button 
-            asChild 
+          <Button
+            asChild
             className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-6"
           >
-            <a href="https://api.whatsapp.com/send/?phone=556199315616&text=Ol%C3%A1%21+Vim+pelo+seu+site+e+gostaria+de+saber+mais+sobre+suas+landing+pages+de+alta+convers%C3%A3o.&type=phone_number&app_absent=0" target="_blank" rel="noopener">Contato</a>
+            <a href={generateWhatsAppLink()} target="_blank" rel="noopener noreferrer" data-cta="header">
+              Falar no WhatsApp
+            </a>
           </Button>
         </nav>
 
-        {/* Mobile Menu Button */}
         <Button
           variant="ghost"
           size="icon"
           className="md:hidden"
-          onClick={toggleMenu}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={isMenuOpen}
+          aria-controls="menu-mobile"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </Button>
       </div>
 
-      {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-4 flex flex-col space-y-4">
+        <nav
+          id="menu-mobile"
+          aria-label="Navegação principal"
+          className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-4 flex flex-col space-y-2"
+        >
           <NavLinks mobile onClick={() => setIsMenuOpen(false)} />
-          <Button 
-            asChild 
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white"
-          >
-            <a  href="https://api.whatsapp.com/send/?phone=556199315616&text=Ol%C3%A1%21+Vim+pelo+seu+site+e+gostaria+de+saber+mais+sobre+suas+landing+pages+de+alta+convers%C3%A3o.&type=phone_number&app_absent=0" rel="noopener"
-                target="_blank" onClick={() => setIsMenuOpen(false)}>Contato</a>
+          <Button asChild className="w-full bg-orange-500 hover:bg-orange-600 text-white h-12">
+            <a
+              href={generateWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="header-mobile"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Falar no WhatsApp
+            </a>
           </Button>
-        </div>
+        </nav>
       )}
     </header>
   );
 };
 
+const links = [
+  { href: '#beneficios', label: 'Como trabalho' },
+  { href: '#portfolio', label: 'Portfólio' },
+  { href: '#planos', label: 'Planos' },
+  { href: '#faq', label: 'Dúvidas' },
+];
+
 const NavLinks = ({ mobile = false, onClick = () => {} }) => {
-  const linkClass = mobile 
-    ? "block py-2 text-gray-700 hover:text-orange-500 transition-colors"
+  const linkClass = mobile
+    ? "block py-3 text-gray-700 hover:text-orange-500 transition-colors"
     : "text-gray-700 hover:text-orange-500 transition-colors";
 
   return (
     <>
-      <a href="#beneficios" className={linkClass} onClick={onClick}>
-        Benefícios
-      </a>
-      <a href="#portfolio" className={linkClass} onClick={onClick}>
-        Portfólio
-      </a>
-      <a href="#faq" className={linkClass} onClick={onClick}>
-        FAQ
-      </a>
+      {links.map((link) => (
+        <a key={link.href} href={link.href} className={linkClass} onClick={onClick}>
+          {link.label}
+        </a>
+      ))}
     </>
   );
 };
